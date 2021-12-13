@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void buildErrorDialog(BuildContext context, String title, String msg) {
+buildErrorDialog(BuildContext context, String title, String msg) {
   showDialog(
     barrierDismissible: false,
     context: context,

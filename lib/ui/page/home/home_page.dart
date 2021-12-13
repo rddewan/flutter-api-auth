@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
       Container(
         child: Column(
           children: [
-            Text('Home'),
-            buildProgressBar(),
+            Text('Home'),         
           ],
 
         ),

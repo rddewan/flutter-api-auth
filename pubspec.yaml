@@ -28,16 +28,54 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
-    sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+    sdk: flutter  
   cupertino_icons: ^1.0.2
   dio: ^4.0.4
   dio_http_formatter: ^2.1.0
   flutter_riverpod: 1.0.2
   multiple_result: ^1.0.4
+  flutter_secure_storage: ^5.0.2
+  flutter_native_splash: ^1.3.2
+
+flutter_native_splash:
+  #flutter pub run flutter_native_splash:create
+  # platform
+  android: true
+  ios: true
+  web: true
+
+  #light mode
+  color: "e1f5fe"
+  #background_image_dark: "assets/dark-background.png"
+  image: assets/images/4.0x/app_icon_4x.png
+
+  #dark mode
+  color_dark: "#042a49"
+  #background_image_dark: "assets/dark-background.png"
+  image_dark: assets/images/4.0x/app_icon_4x.png
+
+  # The position of the splash image can be set with android_gravity, ios_content_mode, and
+  # web_image_mode parameters.  All default to center.
+  # center_horizontal, center_vertical, clip_horizontal, clip_vertical, end, fill, fill_horizontal,
+  # fill_vertical, left, right, start, or top.
+  android_gravity: top
+  # scaleAspectFit, scaleAspectFill, center, top, bottom, left, right, topLeft, topRight,
+  # bottomLeft, or bottomRight.
+  ios_content_mode: center
+  # web_image_mode can be one of the following modes: center, contain, stretch, and cover.
+  web_image_mode: center
+
+  # To hide the notification bar, use the fullscreen parameter. 
+  # NOTE: Unlike Android, iOS will not automatically show the notification bar when the app loads.
+  #       To show the notification bar, add the following code to your Flutter app:
+  #       WidgetsFlutterBinding.ensureInitialized();
+  #       SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom, SystemUiOverlay.top]);
+  fullscreen: true
+  
+  #support android12
+  android12: true
+
+
 
 dev_dependencies:
   flutter_test:

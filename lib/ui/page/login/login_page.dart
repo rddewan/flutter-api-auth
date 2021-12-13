@@ -89,8 +89,9 @@ class LoginPage extends ConsumerWidget {
   void listenLoginController(WidgetRef ref, BuildContext context) {
     ref.listen<LoginState>(provideloginController, (previous, next) {
       next.doLogin.when(data: (data) {
+        print('data: $data');
         hideLoadingMeterialDialog(context);
-        //remove the top most route 
+        //remove the top most route
         Navigator.pop(context);
         //navigate to home page
         Navigator.push(
