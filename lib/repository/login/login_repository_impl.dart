@@ -2,18 +2,17 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:login_register/data/remote/model/request/login_request.dart';
 import 'package:login_register/data/remote/model/response/login_response.dart';
 import 'package:login_register/data/remote/provide_dio.dart';
 import 'package:login_register/repository/login/login_repository.dart';
 import 'package:login_register/util/failure.dart';
 
-final provideLoginRepositoryImpl = Provider<LoginRepositoryImpl>((ref) {
+final provideLoginRepositoryImpl = Provider<LoginRepository>((ref) {
   var _dio = ref.watch(provideDio);
   return LoginRepositoryImpl(_dio);
 });
 
-class LoginRepositoryImpl extends LoginRepository {
+class LoginRepositoryImpl implements LoginRepository {
   LoginRepositoryImpl(this._dio);
   final Dio _dio;
 

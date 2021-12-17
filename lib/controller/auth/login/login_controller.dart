@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:login_register/controller/login/state/login_state.dart';
-import 'package:login_register/service/login/login_service.dart';
-import 'package:login_register/service/login/login_service_impl.dart';
+import 'package:login_register/controller/auth/login/login_state.dart';
+import 'package:login_register/service/auth/login/login_service.dart';
+import 'package:login_register/service/auth/login/login_service_impl.dart';
+
 
 final provideloginController =
     StateNotifierProvider<LoginController, LoginState>((ref) {

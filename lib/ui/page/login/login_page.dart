@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:login_register/controller/login/login_controller.dart';
-import 'package:login_register/controller/login/state/login_state.dart';
+import 'package:login_register/controller/auth/login/login_controller.dart';
+import 'package:login_register/controller/auth/login/login_state.dart';
 import 'package:login_register/ui/page/home/home_page.dart';
 import 'package:login_register/ui/widget/build_error_dialog.dart';
 import 'package:login_register/ui/widget/build_loading_dialog.dart';

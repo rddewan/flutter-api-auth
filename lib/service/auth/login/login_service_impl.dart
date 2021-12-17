@@ -1,23 +1,21 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_register/data/local/model/auth/auth_model.dart';
-import 'package:login_register/data/remote/model/response/login_response.dart';
 import 'package:login_register/repository/auth/secure_storage_repository.dart';
 import 'package:login_register/repository/auth/secure_storage_repository_impl.dart';
 import 'package:login_register/repository/login/login_repository.dart';
 import 'package:login_register/repository/login/login_repository_impl.dart';
-import 'package:login_register/service/auth/secure_storage.dart';
-import 'package:login_register/service/login/login_service.dart';
+import 'package:login_register/service/auth/login/login_service.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:login_register/util/failure.dart';
 
-final provideLoginService = Provider<LoginServiceImpl>((ref) {
+final provideLoginService = Provider<LoginService>((ref) {
   final _loginRepository = ref.watch(provideLoginRepositoryImpl);
   final _secureStorage = ref.watch(provideSecureStorageRepository);
 
   return LoginServiceImpl(_loginRepository, _secureStorage);
 });
 
-class LoginServiceImpl implements LoginService, SecureStorageService {
+class LoginServiceImpl implements LoginService {
   LoginServiceImpl(this._loginRepository, this._secureStorageRepository);
 
   final LoginRepository _loginRepository;
@@ -40,17 +38,7 @@ class LoginServiceImpl implements LoginService, SecureStorageService {
     } on Failure catch (failure) {
       return Error(failure);
     }
-  }
-
-  @override
-  Future<Result<Failure, bool>> clear() async {
-    try {
-      final _success = await _secureStorageRepository.clear();
-      return Success(_success);
-    } on Failure catch (failure) {
-      return Error(failure);
-    }
-  }
+  } 
 
   @override
   Future<Result<Failure, AuthModel?>> read() async {
