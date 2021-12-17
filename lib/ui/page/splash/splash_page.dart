@@ -15,7 +15,7 @@ class SplashPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     listenSplashController(context, ref);
-    return buildScaffold("", Container(), null);
+    return BuildScaffold("", Container(), null);
   }
 
   void listenSplashController(BuildContext context, WidgetRef ref) {

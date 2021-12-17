@@ -22,11 +22,7 @@ class SecureStorageImpl implements SecureStorage {
   static const _keyName = 'name';
   static const _keyEmail = 'email';
 
-  AuthModel? _cachedAuthModel;
-
-  AndroidOptions _getAndroidOptions() => const AndroidOptions(
-        encryptedSharedPreferences: true,
-      );
+  AuthModel? _cachedAuthModel; 
 
   @override
   Future<bool> clear() async {

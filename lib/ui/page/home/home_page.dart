@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buildScaffold(
+    return BuildScaffold(
       'Home', 
       Container(
         child: Column(
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
 
         ),
       ), 
-      null
+      null   
     );
   }
 }

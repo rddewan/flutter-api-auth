@@ -19,7 +19,7 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _formKey = GlobalKey<FormState>();
     listenLoginController(ref, context);
-    return buildScaffold('Login',
+    return BuildScaffold('Login',
         LayoutBuilder(builder: (context, constraints) {
       final maxWidth = constraints.maxWidth;
       if (maxWidth <= 600) {
