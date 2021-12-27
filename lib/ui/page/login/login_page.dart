@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_register/controller/auth/login/login_controller.dart';
 import 'package:login_register/controller/auth/login/login_state.dart';
 import 'package:login_register/ui/page/home/home_page.dart';
+import 'package:login_register/ui/page/signup/signup_page.dart';
 import 'package:login_register/ui/widget/build_error_dialog.dart';
 import 'package:login_register/ui/widget/build_loading_dialog.dart';
 import 'package:login_register/ui/widget/build_scaffold.dart';
@@ -65,6 +66,42 @@ class LoginPage extends ConsumerWidget {
                       )
                     ],
                   )),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text("Don't have a account?",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400)),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          textStyle: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.orange)),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SignupPage()));
+                      },
+                      child: const Text(
+                        'Register',
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.orange),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             )
           ],
         );
@@ -89,7 +126,6 @@ class LoginPage extends ConsumerWidget {
   void listenLoginController(WidgetRef ref, BuildContext context) {
     ref.listen<LoginState>(provideloginController, (previous, next) {
       next.doLogin.when(data: (data) {
-        print('data: $data');
         hideLoadingMeterialDialog(context);
         //remove the top most route
         Navigator.pop(context);
