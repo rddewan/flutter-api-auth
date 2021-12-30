@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-buildErrorDialog(BuildContext context, String title, String msg) {
+void buildErrorDialog(BuildContext context, {required String title,required String msg}) {
   showDialog(
     barrierDismissible: false,
     context: context,
@@ -31,7 +30,7 @@ buildErrorDialog(BuildContext context, String title, String msg) {
               label: const Text('close'))
         ],
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0),bottomRight: Radius.circular(16.0))
+          borderRadius: BorderRadius.all(Radius.circular(16.0))
         ),
         
       );

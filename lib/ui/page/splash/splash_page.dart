@@ -5,8 +5,8 @@ import 'package:login_register/controller/splash/state/splash_state.dart';
 import 'package:login_register/ui/page/home/home_page.dart';
 import 'package:login_register/ui/page/login/login_page.dart';
 import 'package:login_register/ui/widget/build_error_dialog.dart';
-import 'package:login_register/ui/widget/build_progress_bar.dart';
 import 'package:login_register/ui/widget/build_scaffold.dart';
+import 'package:login_register/ui/widget/progress_bar.dart';
 import 'package:login_register/util/failure.dart';
 
 class SplashPage extends ConsumerWidget {
@@ -30,14 +30,13 @@ class SplashPage extends ConsumerWidget {
               Navigator.pop(context);
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => HomePage()));
-            }
-            return Container();
+            }            
           },
           error: (e, s) {
             e as Failure;
-            return buildErrorDialog(context, 'error', e.message);
+            return buildErrorDialog(context,title: 'Ouch!', msg: e.message);
           },
-          loading: () => buildProgressBar());
+          loading: () => const ProgressBar());
     });
   }
 }

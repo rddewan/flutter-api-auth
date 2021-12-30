@@ -34,7 +34,7 @@ buildPasswordFormFiled(String hint, String lable,TextEditingController controlle
 
 buildEmailFormFiled(String hint, String lable,TextEditingController controller) => TextFormField(
   controller: controller,
-  keyboardType: TextInputType.emailAddress,
+  keyboardType: TextInputType.emailAddress,  
   validator: (value) {
     if (!isValidEmail(value)) {
       return "Email is not valid";

@@ -7,19 +7,42 @@ import 'package:login_register/ui/page/signup/signup_page.dart';
 import 'package:login_register/ui/widget/build_error_dialog.dart';
 import 'package:login_register/ui/widget/build_loading_dialog.dart';
 import 'package:login_register/ui/widget/build_scaffold.dart';
-import 'package:login_register/ui/widget/build_form_filed.dart';
+import 'package:login_register/ui/widget/email_form_filed.dart';
 import 'package:login_register/ui/widget/outlined_button_green.dart';
+import 'package:login_register/ui/widget/password_form_filed.dart';
 import 'package:login_register/util/failure.dart';
 
-class LoginPage extends ConsumerWidget {
-  LoginPage({Key? key}) : super(key: key);
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+class LoginPage extends ConsumerStatefulWidget {
+  LoginPage({this.email, Key? key}) : super(key: key);
+  final String? email;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends ConsumerState<LoginPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  late FocusNode passwordFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    passwordFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    passwordFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     listenLoginController(ref, context);
+
     return BuildScaffold('Login',
         LayoutBuilder(builder: (context, constraints) {
       final maxWidth = constraints.maxWidth;
@@ -34,11 +57,14 @@ class LoginPage extends ConsumerWidget {
                   key: _formKey,
                   child: Column(
                     children: [
-                      buildEmailFormFiled(
-                          'Email', 'Enter your email', _emailController),
+                      EmailTextFormFiled(
+                          lable: 'Email', textController: _emailController),
                       const SizedBox(height: 16.0),
-                      buildPasswordFormFiled('Password', 'Enter your password',
-                          _passwordController),
+                      PasswordFormField(
+                        lableText: 'Password',
+                        textController: _passwordController,
+                        focusNode: passwordFocusNode,
+                      ),
                       const SizedBox(height: 16.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,8 +114,15 @@ class LoginPage extends ConsumerWidget {
                               fontWeight: FontWeight.w400,
                               color: Colors.orange)),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SignupPage()));
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(
+                                builder: (context) => SignupPage()))
+                            .then((value) {
+                          if (value != null || value != '') {
+                            _emailController.text = value.toString();
+                            showSuccessDialog(context);
+                          }
+                        });
                       },
                       child: const Text(
                         'Register',
@@ -135,11 +168,45 @@ class LoginPage extends ConsumerWidget {
       }, error: (e, s) {
         e as Failure;
         hideLoadingMeterialDialog(context);
-        buildErrorDialog(context, 'ouch!', e.message);
+        return buildErrorDialog(context, title: 'Ouch!', msg: e.message);
       }, loading: () {
         buildLoadingMeterialDialog(context, 'connecting...',
             'Please wait we are trying to connect...');
       });
     });
+  }
+
+  void showSuccessDialog(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Great!'),
+            content: Row(
+              children: const [
+                Icon(
+                  Icons.emoji_emotions_outlined,
+                  color: Colors.yellow,
+                  size: 32.0,
+                  semanticLabel: 'emoji smily face',
+                ),
+                SizedBox(width: 8.0),
+                Expanded(
+                    child: Text('You have successfully created a new account.'))
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    hideLoadingMeterialDialog(context);
+                    passwordFocusNode.requestFocus();
+                  },
+                  child: const Text('OK'))
+            ],
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16.0))),
+          );
+        });
   }
 }

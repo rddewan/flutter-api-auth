@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_register/controller/auth/logout/logout_controller.dart';
 import 'package:login_register/controller/auth/logout/logout_state.dart';
 import 'package:login_register/ui/page/splash/splash_page.dart';
-import 'package:login_register/ui/widget/build_progress_bar.dart';
+
 
 class BuildScaffold extends ConsumerWidget {
   const BuildScaffold(this.title, this.widget, this.fab, {Key? key})

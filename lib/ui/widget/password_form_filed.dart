@@ -5,10 +5,12 @@ class PasswordFormField extends StatelessWidget {
     Key? key,
     required this.lableText,
     required this.textController,
+    this.focusNode
   }) : super(key: key);
 
   final String lableText;
   final TextEditingController textController;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class PasswordFormField extends StatelessWidget {
       obscureText: true,
       obscuringCharacter: '*',
       controller: textController,
+      focusNode: focusNode,
       decoration: InputDecoration(
           border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0))),
