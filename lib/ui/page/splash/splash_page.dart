@@ -13,11 +13,11 @@ class SplashPage extends ConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    listenSplashController(context, ref);
+  Widget build(BuildContext context, WidgetRef ref) {    
+    listenSplashController(context, ref);    
     return BuildScaffold("", Container(), null);
   }
-
+   
   void listenSplashController(BuildContext context, WidgetRef ref) {
     ref.listen<SplashState>(provideSplashController, (previous, next) {
       next.authModel.when(
@@ -30,11 +30,11 @@ class SplashPage extends ConsumerWidget {
               Navigator.pop(context);
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => HomePage()));
-            }            
+            }
           },
           error: (e, s) {
             e as Failure;
-            return buildErrorDialog(context,title: 'Ouch!', msg: e.message);
+            return buildErrorDialog(context, title: 'Ouch!', msg: e.message);
           },
           loading: () => const ProgressBar());
     });
