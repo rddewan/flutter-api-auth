@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:login_register/ui/page/splash/splash_page.dart';
 import 'package:login_register/ui/route/route_generator.dart';
 
 void main() {

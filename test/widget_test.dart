@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:login_register/ui/page/login/login_page.dart';
 import 'package:login_register/ui/widget/outlined_button_green.dart';
 
 void main() {
