@@ -13,7 +13,7 @@ import 'package:login_register/ui/widget/password_form_filed.dart';
 import 'package:login_register/util/failure.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
-  LoginPage({this.email, Key? key}) : super(key: key);
+  const LoginPage({this.email, Key? key}) : super(key: key);
   final String? email;
 
   @override

@@ -16,13 +16,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BuildScaffold(
       'Home', 
-      Container(
-        child: Column(
-          children: [
-            Text('Home'),         
-          ],
+      Column(
+        children: const [
+          Text('Home'),         
+        ],
 
-        ),
       ), 
       null   
     );
