@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_register/ui/page/login/login_page.dart';
 import 'package:login_register/ui/page/splash/splash_page.dart';
@@ -14,7 +13,7 @@ class RouteGenerator {
         if (args is String) {
           return MaterialPageRoute(builder: (_) => LoginPage(email: args));
         }
-        return MaterialPageRoute(builder: (_) => LoginPage());
+        return MaterialPageRoute(builder: (_) => const LoginPage());
       default:
         return _errorRoute();
     }

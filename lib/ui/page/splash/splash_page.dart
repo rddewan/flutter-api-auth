@@ -25,11 +25,11 @@ class SplashPage extends ConsumerWidget {
             if (data == null) {
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginPage()));
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
             } else {
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+                  context, MaterialPageRoute(builder: (context) => const HomePage()));
             }
           },
           error: (e, s) {
