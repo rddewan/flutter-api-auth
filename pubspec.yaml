@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter  
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.4
   dio: ^4.0.4
   dio_http_formatter: ^2.1.0
   flutter_riverpod: 1.0.3
