@@ -45,8 +45,8 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-
-
+#Firebase iOS service file
+/ios/Runner/GoogleService-Info.plist
 
 //excluded firebase service file for android
 /android/app/google-services.json
