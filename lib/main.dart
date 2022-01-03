@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_register/ui/route/route_generator.dart';
 
-void main() {
+void main() async{
   /*
   base on flutter_native_splash when set to fullscreen parameter 
   iOS will not automatically show the notification bar when the app loads.
