@@ -11,6 +11,7 @@ import 'package:login_register/ui/widget/email_form_filed.dart';
 import 'package:login_register/ui/widget/outlined_button_green.dart';
 import 'package:login_register/ui/widget/password_form_filed.dart';
 import 'package:login_register/util/failure.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({this.email, Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final _formKey = GlobalKey<FormState>();
     listenLoginController(ref, context);
 
-    return BuildScaffold('Login',
+    return BuildScaffold(AppLocalizations.of(context)!.login,
         LayoutBuilder(builder: (context, constraints) {
       final maxWidth = constraints.maxWidth;
       if (maxWidth <= 600) {
@@ -102,8 +103,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text("Don't have a account?",
-                        style: TextStyle(
+                    Text(AppLocalizations.of(context)!.createAccountMsg,
+                        style: const TextStyle(
                             fontSize: 16.0,
                             color: Colors.black,
                             fontWeight: FontWeight.w400)),

@@ -1,0 +1,11 @@
+{
+    "appTitle": "Login Register",
+    "@appTitle": {
+        "description": "The default app title"
+    },
+    "login": "Login",
+    "@login": {
+        "description": "Login page title"
+    },
+    "createAccountMsg": "Don't have a account?"
+}
